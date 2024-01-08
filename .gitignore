@@ -1,0 +1,11 @@
+.DS_Store
+node_modules
+dist
+jest-coverage
+.eslintcache
+.env
+.cache
+.turbo
+.jest-cache/
+storybook-static/
+build-storybook.log
