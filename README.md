@@ -1,6 +1,6 @@
 ## Design System Starter Kit
 
-> [Educational Purpose] This is a design system starter kit for [my blog series **Design System 101**](https://www.jing-tech.me/series/design-system/index).
+> **[Educational Purpose]** This is a design system starter kit for my blog series [Design System 101](https://www.jing-tech.me/series/design-system/index).
 
 ## Getting Started
 
