@@ -53,7 +53,17 @@ pnpm add -D @changesets/cli @changesets/cli turbo
 ```
 
 ```bash
+pnpm install -D plop prettier husky eslint eslint-config-react eslint-config-prettier eslint-plugin-jsx-a11y eslint-plugin-react @commitlint/cli @commitlint/config-conventional @typescript-eslint/eslint-plugin @typescript-eslint/parser lint-staged -w
+```
+
+```bash
 pnpm add react react-dom
+```
+
+##### Init changeset
+
+```bash
+pnpm changeset init
 ```
 
 ##### Setup turbo
@@ -83,4 +93,18 @@ pnpm add react react-dom
 
 ```bash
 npx turbo init
+```
+
+#### Create components and design-tokens package
+
+```bash
+mkdir packages/components
+mkdir packages/design-tokens
+mkdir packages/tsconfig
+```
+
+##### Create plop-templates folder
+
+```bash
+
 ```
