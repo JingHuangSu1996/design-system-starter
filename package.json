@@ -4,7 +4,16 @@
   "description": "[Educational Purpose] This is a design system starter kit for my blog series Design System 101",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:packages": "turbo run build",
+    "changeset": "changeset",
+    "clear": "rimraf 'packages/*/{lib,node_modules}' && rimraf node_modules",
+    "dev": "turbo run dev -- --watch",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "generate": "plop",
+    "lint": "eslint packages/**/**/src --ext .ts,.tsx --config .eslintrc.js --cache",
+    "postinstall": "husky install",
+    "release": "changeset publish",
+    "version": "changeset version"
   },
   "keywords": [
     "Design System"
@@ -14,6 +23,20 @@
   "private": true,
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
+    "@commitlint/cli": "^18.4.4",
+    "@commitlint/config-conventional": "^18.4.4",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "@your-design-system/tsconfig": "workspace:*",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "plop": "^4.0.1",
+    "prettier": "^3.2.2",
     "turbo": "^1.11.3"
   },
   "dependencies": {
