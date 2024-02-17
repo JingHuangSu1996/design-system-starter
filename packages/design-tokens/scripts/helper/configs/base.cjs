@@ -10,7 +10,7 @@ function getDefaultFileConfig(theme) {
 
 function getBaseFileConfig() {
   return {
-    filter: (token) => baseFilter(token),
+    filter: baseFilter,
   };
 }
 
