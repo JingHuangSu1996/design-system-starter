@@ -1,5 +1,5 @@
 {
-  "name": "design-tokens",
+  "name": "@your-design-system/design-tokens",
   "version": "1.0.0",
   "description": "[Educational Purpose/Design Tokens] This is a design system starter kit for my blog series Design System 101",
   "main": "index.js",

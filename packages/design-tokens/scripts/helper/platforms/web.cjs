@@ -7,129 +7,16 @@ function getThemeSelector(theme) {
   return `html[data-theme="${theme}"], .your-design-system-${theme}`;
 }
 
-// function getWebConfig(theme) {
-//   const notDefaultTheme = theme !== DARK;
-//   const THEME_PATH = `${BUILD_PATH}${theme}/`;
-
-//   return {
-//     theming_css: {
-//       transformGroup: webTransforms.css,
-//       transforms: cssTransforms,
-//       prefix: PREFIX,
-//       buildPath: notDefaultTheme ? `${BUILD_PATH}/themes/` : `${BUILD_PATH}css/`,
-//       files: [
-//         {
-//           ...getDefaultFileConfig(theme),
-//           format: webFormats.cssVars,
-//           destination: notDefaultTheme ? `${theme}.css` : 'variables.css',
-//           options: {
-//             selector: notDefaultTheme ? getThemeSelector(theme) : null,
-//           },
-//         },
-//       ],
-//     },
-//     css: {
-//       transformGroup: webTransforms.css,
-//       buildPath: `${BUILD_PATH}css/`,
-//       prefix: PREFIX,
-//       files: [
-//         {
-//           ...getBaseFileConfig(),
-//           format: webFormats.cssVars,
-//           destination: 'base_variables.css',
-//         },
-//       ],
-//     },
-//     theming_scss: {
-//       transformGroup: webTransforms.scss,
-//       transforms: cssTransforms,
-//       buildPath: `${BUILD_PATH}scss/`,
-//       prefix: PREFIX,
-//       files: [
-//         {
-//           ...getDefaultFileConfig(theme),
-//           destination: `_${theme}-variables.scss`,
-//           format: webFormats.scss,
-//         },
-//       ],
-//     },
-//     scss: {
-//       transformGroup: webTransforms.scss,
-//       buildPath: `${BUILD_PATH}scss/`,
-//       prefix: PREFIX,
-//       files: [
-//         {
-//           ...getBaseFileConfig(),
-//           destination: `_base-variables.scss`,
-//           format: webFormats.scss,
-//         },
-//       ],
-//     },
-//     theming_es: {
-//       transformGroup: webTransforms.es,
-//       transforms: jsTransforms,
-//       buildPath: notDefaultTheme ? THEME_PATH : BUILD_PATH,
-//       prefix: PREFIX,
-//       files: [
-//         {
-//           ...getDefaultFileConfig(theme),
-//           destination: notDefaultTheme ? `${theme}.mjs` : 'wrapper.mjs',
-//           format: webFormats.es6,
-//         },
-//       ],
-//     },
-//     es: {
-//       transformGroup: webTransforms.es,
-//       transforms: jsTransforms,
-//       buildPath: BUILD_PATH,
-//       prefix: PREFIX,
-//       files: [
-//         {
-//           ...getBaseFileConfig(),
-//           destination: 'base_wrapper.mjs',
-//           format: webFormats.es6,
-//         },
-//       ],
-//     },
-//     themeing_ts: {
-//       transformGroup: webTransforms.ts,
-//       transforms: jsTransforms,
-//       buildPath: notDefaultTheme ? THEME_PATH : BUILD_PATH,
-//       prefix: PREFIX,
-//       files: [
-//         {
-//           ...getDefaultFileConfig(theme),
-//           destination: notDefaultTheme ? `${theme}.d.ts` : 'index.d.ts',
-//           format: webFormats.tsDeclarations,
-//         },
-//       ],
-//     },
-//     ts: {
-//       transformGroup: webTransforms.ts,
-//       transforms: jsTransforms,
-//       prefix: PREFIX,
-//       buildPath: BUILD_PATH,
-//       files: [
-//         {
-//           ...getBaseFileConfig(),
-//           destination: 'base_index.d.ts',
-//           format: webFormats.tsDeclarations,
-//         },
-//       ],
-//     },
-//   };
-// }
-
 function getWebConfig(theme) {
   const notDefaultTheme = theme !== DARK;
   const THEME_PATH = `${BUILD_PATH}${theme}/`;
 
   return {
-    css: {
+    theming_css: {
       transformGroup: webTransforms.css,
       transforms: cssTransforms,
-      buildPath: notDefaultTheme ? `${BUILD_PATH}/themes/` : `${BUILD_PATH}css/`,
       prefix: PREFIX,
+      buildPath: notDefaultTheme ? `${BUILD_PATH}/themes/` : `${BUILD_PATH}css/`,
       files: [
         {
           ...getDefaultFileConfig(theme),
@@ -141,7 +28,19 @@ function getWebConfig(theme) {
         },
       ],
     },
-    scss: {
+    css: {
+      transformGroup: webTransforms.css,
+      buildPath: `${BUILD_PATH}css/`,
+      prefix: PREFIX,
+      files: [
+        {
+          ...getBaseFileConfig(),
+          format: webFormats.cssVars,
+          destination: 'base_variables.css',
+        },
+      ],
+    },
+    theming_scss: {
       transformGroup: webTransforms.scss,
       transforms: cssTransforms,
       buildPath: `${BUILD_PATH}scss/`,
@@ -154,7 +53,22 @@ function getWebConfig(theme) {
         },
       ],
     },
-    es: {
+    scss: {
+      transformGroup: webTransforms.scss,
+      buildPath: `${BUILD_PATH}scss/`,
+      prefix: PREFIX,
+      files: [
+        {
+          ...getBaseFileConfig(),
+          destination: `_base-variables.scss`,
+          format: webFormats.scss,
+          options: {
+            outputReferences: true,
+          },
+        },
+      ],
+    },
+    theming_es: {
       transformGroup: webTransforms.es,
       transforms: jsTransforms,
       buildPath: notDefaultTheme ? THEME_PATH : BUILD_PATH,
@@ -163,6 +77,19 @@ function getWebConfig(theme) {
         {
           ...getDefaultFileConfig(theme),
           destination: notDefaultTheme ? `${theme}.mjs` : 'wrapper.mjs',
+          format: webFormats.es6,
+        },
+      ],
+    },
+    es: {
+      transformGroup: webTransforms.es,
+      transforms: jsTransforms,
+      buildPath: BUILD_PATH,
+      prefix: PREFIX,
+      files: [
+        {
+          ...getBaseFileConfig(),
+          destination: 'base_wrapper.mjs',
           format: webFormats.es6,
         },
       ],

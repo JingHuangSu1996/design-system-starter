@@ -7,7 +7,7 @@ function filterByTheme(token, theme) {
 }
 
 function baseFilter(token) {
-  if (['./tokens/space/alias.json', './tokens/shape/alias.json', './tokens/font/alias.json'].includes(token.filePath)) {
+  if (['tokens/space/alias.json', 'tokens/shape/alias.json', 'tokens/font/alias.json'].includes(token.filePath)) {
     return token;
   }
 
